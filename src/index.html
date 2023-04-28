@@ -17,12 +17,12 @@
     <!-- Add Employee -->
     <div class="flex flex-col">
       <h2 class="text-2xl m-4">Add Employee</h2>
-      <form onsubmit="onSubmit(event)" class="flex items-start justify-between m-4 border-y-2 py-4">
-        <input class="p-2 " type="text" placeholder="First Name" />
-        <input class="p-2" type="text" placeholder="Last Name" />
-        <input class="p-2" type="text" placeholder="ID" />
-        <input class="p-2" type="text" placeholder="Title" />
-        <input class="p-2" type="text" placeholder="Anual Salary" />
+      <form onsubmit="onSubmit(event)" class="flex items-start justify-between m-4 border-b-2 py-4">
+        <input id="first-name" class="p-2 border-b-2" type="text" placeholder="First Name" />
+        <input id="last-name" class="p-2 border-b-2" type="text" placeholder="Last Name" />
+        <input id="employee-id" class="p-2 border-b-2" type="text" placeholder="ID" />
+        <input id="title" class="p-2 border-b-2" type="text" placeholder="Title" />
+        <input id="anual-salary" class="p-2 border-b-2" type="text" placeholder="Anual Salary" />
         <button
           class="bg-gray-800 shadow-md rounded-md px-3 py-2 hover:scale-105 focus:bg-slate-700 focus:scale-100  text-slate-100"
           type="submit">Submit</button>
@@ -33,56 +33,47 @@
       <div class="flex-1">
         <h2 class="text-2xl mb-8 m-4">Employees</h2>
         <!-- table -->
-        <div class="flex justify-between m-4">
-          <!-- first Name -->
-          <div>
-            <h3 class="mb-2 text-gray-700 border-b-2 pb-2">First Name</h3>
-            <ul>
-              <li>Michael</li>
-            </ul>
+        <div id="employee-table">
+          <!-- Column Names -->
+          <div class="border-b-2 pb-2 grid grid-cols-11">
+            <div class="col-span-2">First Name</div>
+            <div class="col-span-2">Last Name</div>
+            <div class="col-span-2">ID</div>
+            <div class="col-span-2">Title</div>
+            <div class="col-span-2">Salary</div>
+            <div class="col-span-1"></div>
           </div>
-          <!-- last name -->
-          <div>
-            <h3 class="mb-2 text-gray-700 border-b-2 pb-2">Last Name</h3>
-            <ul>
-              <li>Duren</li>
-            </ul>
+          <!-- row 1 -->
+          <div class="p-2 grid grid-cols-11">
+            <div class="col-span-2">Daniel</div>
+            <div class="col-span-2">Duren</div>
+            <div class="col-span-2">123899</div>
+            <div class="col-span-2">Directory</div>
+            <div class="col-span-2">$95,000</div>
+            <div class="col-span-1 flex items-start justify-start">
+              <div class="cursor-pointer">
+                <svg class="h-5 text-slate-600 hover:text-slate-900" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-6 h-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+            </div>
           </div>
-          <!-- ID -->
-          <div>
-            <h3 class="mb-2 text-gray-700 border-b-2 pb-2">ID</h3>
-            <ul>
-              <li>460577</li>
-            </ul>
-          </div>
-          <!-- Title -->
-          <div>
-            <h3 class="mb-2 text-gray-700 border-b-2 pb-2">Title</h3>
-            <ul>
-              <li>Software Engineer</li>
-            </ul>
-          </div>
-          <!-- Annual Salary -->
-          <div>
-            <h3 class="mb-2 text-gray-700 border-b-2 pb-2">Annual Salary</h3>
-            <ul>
-              <li>$80,000</li>
-            </ul>
-          </div>
-          <!-- Delete button -->
-          <div>
-            <h3 class="mb-2 text-gray-700 border-b-2 pb-2">Remove</h3>
-            <ul>
-              <li class="flex items-center justify-center">
-                <div class="cursor-pointer">
-                  <svg class="h-5 text-slate-600 hover:text-slate-900" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-
-                </div>
-              </li>
-            </ul>
+          <!-- row 2 -->
+          <div class="p-2 grid grid-cols-11">
+            <div class="col-span-2">Michael</div>
+            <div class="col-span-2">Duren</div>
+            <div class="col-span-2">460577</div>
+            <div class="col-span-2">Software Engineer</div>
+            <div class="col-span-2">$80,000</div>
+            <div class="col-span-1 flex items-start justify-start">
+              <div class="cursor-pointer">
+                <svg class="h-5 text-slate-600 hover:text-slate-900" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-6 h-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
       </div>
