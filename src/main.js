@@ -33,3 +33,7 @@ const employees = [
 
 // render chart
 let chart = createNewChart(employees, ctx);
+
+// total monthly
+const totalMonthly = document.querySelector('#total-monthly');
+totalMonthly.innerHTML += getTotalMonthly();

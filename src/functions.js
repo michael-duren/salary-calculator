@@ -66,6 +66,7 @@ const onSubmit = (event) => {
     chart.destroy();
   }
   chart = createNewChart(employees, ctx);
+  totalMonthly.innerHTML = `Total Monthly: ${getTotalMonthly()}`;
 };
 
 const onRemove = (id) => {
@@ -81,4 +82,18 @@ const onRemove = (id) => {
     chart.destroy();
   }
   chart = createNewChart(employees, ctx);
+  totalMonthly.innerHTML = `Total Monthly: $${getTotalMonthly()}`;
+};
+
+const getTotalMonthly = () => {
+  const total = employees.reduce((acc, employee) => {
+    return acc + +employee.annualSalary;
+  }, 0);
+  const totalMonthlyValue = (total / 12).toFixed(2);
+  if (totalMonthlyValue > 20000) {
+    totalMonthly.classList.add('text-red-500');
+    return `<span class="text-red-500">${totalMonthlyValue}</span>`;
+  }
+  totalMonthly.classList.remove('text-red-500');
+  return totalMonthlyValue;
 };
