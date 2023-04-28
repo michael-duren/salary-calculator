@@ -67,6 +67,13 @@ const onSubmit = (event) => {
   }
   chart = createNewChart(employees, ctx);
   totalMonthly.innerHTML = `Total Monthly: ${getTotalMonthly()}`;
+
+  // clear input fields
+  firstName.value = '';
+  lastName.value = '';
+  employeeId.value = '';
+  title.value = '';
+  annualSalary.value = '';
 };
 
 const onRemove = (id) => {
@@ -91,9 +98,10 @@ const getTotalMonthly = () => {
   }, 0);
   const totalMonthlyValue = (total / 12).toFixed(2);
   if (totalMonthlyValue > 20000) {
-    totalMonthly.classList.add('text-red-500');
-    return `<span class="text-red-500">${totalMonthlyValue}</span>`;
+    totalMonthly.classList.remove('text-slate-800');
+    totalMonthly.classList.add('bg-red-500', 'text-white');
+    return totalMonthlyValue;
   }
-  totalMonthly.classList.remove('text-red-500');
+  totalMonthly.classList.remove('bg-red-500');
   return totalMonthlyValue;
 };
