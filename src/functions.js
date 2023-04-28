@@ -102,6 +102,7 @@ const getTotalMonthly = () => {
     totalMonthly.classList.add('bg-red-500', 'text-white');
     return totalMonthlyValue;
   }
-  totalMonthly.classList.remove('bg-red-500');
+  totalMonthly.classList.remove('bg-red-500', 'text-white');
+  totalMonthly.classList.add('text-slate-800');
   return totalMonthlyValue;
 };
