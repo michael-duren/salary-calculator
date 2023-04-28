@@ -31,6 +31,11 @@ const employees = [
   },
 ];
 
+// add initial employees to table
+for (let employee of employees) {
+  table.innerHTML += addEmployee(employee);
+}
+
 // render chart
 let chart = createNewChart(employees, ctx);
 
