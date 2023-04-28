@@ -1,22 +1,29 @@
-const ctx = document.querySelector('#employee-chart');
+const createNewChart = (employees, ctx) => {
+  const names = employees.map((employee) => {
+    return employee.firstName;
+  });
 
-const chart = new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: ['Michael'],
-    datasets: [
-      {
-        label: 'Employee Salary',
-        data: ['80000'],
-        borderWidth: 1,
-      },
-    ],
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true,
+  const salaries = employees.map((employee) => {
+    return employee.annualSalary;
+  });
+  return new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: [...names],
+      datasets: [
+        {
+          label: 'Employee Salary',
+          data: [...salaries],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
       },
     },
-  },
-});
+  });
+};
