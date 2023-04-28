@@ -1,52 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Salary Calculator</title>
-    <link rel="stylesheet" href="../dist//output.css" />
-  </head>
-  <body>
-    <header><h1 class="text-3xl">Salary Calculator</h1></header>
-    <main>
-      <!-- Add Employee -->
-      <div>
-        <h2>Add Employee</h2>
-        <form>
-          <input type="text" placeholder="First Name" />
-          <input type="text" placeholder="Last Name" />
-          <input type="text" placeholder="ID" />
-          <input type="text" placeholder="Title" />
-          <input type="text" placeholder="Anual Salary" />
-          <button type="submit">Submit</button>
-        </form>
-      </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salary Calculator</title>
+  <link rel="stylesheet" href="../dist//output.css" />
+</head>
+
+<body>
+  <header class="flex items-center justify-center  border-b-2 p-8">
+    <h1 class="text-slate-900 text-4xl">Salary Calculator</h1>
+  </header>
+  <main class="m-16">
+    <!-- Add Employee -->
+    <div class="flex flex-col">
+      <h2 class="text-2xl m-4">Add Employee</h2>
+      <form onsubmit="onSubmit(event)" class="flex items-start justify-between m-4 border-y-2 py-4">
+        <input class="p-2 " type="text" placeholder="First Name" />
+        <input class="p-2" type="text" placeholder="Last Name" />
+        <input class="p-2" type="text" placeholder="ID" />
+        <input class="p-2" type="text" placeholder="Title" />
+        <input class="p-2" type="text" placeholder="Anual Salary" />
+        <button
+          class="bg-gray-800 shadow-md rounded-md px-3 py-2 hover:scale-105 focus:bg-slate-700 focus:scale-100  text-slate-100"
+          type="submit">Submit</button>
+      </form>
+    </div>
+    <div class="flex space-x-4 mt-8">
       <!-- Employees -->
-      <div>
-        <table>
-            <tr>
-              First Name
-            </tr>
-            <tr>
-              Last Name
-            </tr>
-            <tr>
-              ID
-            </tr>
-            <tr>
-              Title
-            </tr>
-            <tr>
-              Annual Salary
-            </tr>
-            <tr></tr>
-          </thead>
-        </table>
+      <div class="flex-1">
+        <h2 class="text-2xl mb-8 m-4">Employees</h2>
+        <!-- table -->
+        <div class="flex justify-between m-4">
+          <!-- first Name -->
+          <div>
+            <h3 class="mb-2 text-gray-700 border-b-2 pb-2">First Name</h3>
+            <ul>
+              <li>Michael</li>
+            </ul>
+          </div>
+          <!-- last name -->
+          <div>
+            <h3 class="mb-2 text-gray-700 border-b-2 pb-2">Last Name</h3>
+            <ul>
+              <li>Duren</li>
+            </ul>
+          </div>
+          <!-- ID -->
+          <div>
+            <h3 class="mb-2 text-gray-700 border-b-2 pb-2">ID</h3>
+            <ul>
+              <li>460577</li>
+            </ul>
+          </div>
+          <!-- Title -->
+          <div>
+            <h3 class="mb-2 text-gray-700 border-b-2 pb-2">Title</h3>
+            <ul>
+              <li>Software Engineer</li>
+            </ul>
+          </div>
+          <!-- Annual Salary -->
+          <div>
+            <h3 class="mb-2 text-gray-700 border-b-2 pb-2">Annual Salary</h3>
+            <ul>
+              <li>$80,000</li>
+            </ul>
+          </div>
+          <!-- Delete button -->
+          <div>
+            <h3 class="mb-2 text-gray-700 border-b-2 pb-2">Remove</h3>
+            <ul>
+              <li class="flex items-center justify-center">
+                <div class="cursor-pointer">
+                  <svg class="h-5 text-slate-600 hover:text-slate-900" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
+      <!-- Graph -->
+      <div class="flex-1">
+        <canvas class="" id="employee-chart"></canvas>
+      </div>
+    </div>
+    <div class="flex mt-4">
       <!-- Total -->
-      <div><h2>Total Monthly: $</h2></div>
-    </main>
-    <script src="main.js"></script>
-  </body>
+      <h2 class="text-2xl">Total Monthly: $</h2>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="chart.js"></script>
+  <script src="main.js"></script>
+</body>
+
 </html>
