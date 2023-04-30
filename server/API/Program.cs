@@ -22,7 +22,7 @@ builder.Services.AddCors(opt =>
         "CorsPolicy",
         policy =>
         {
-            policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://127.0.0.1:5555");
+            policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:5173");
         }
     );
 });
