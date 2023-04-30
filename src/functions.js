@@ -111,7 +111,7 @@ const getTotalMonthly = () => {
     return acc + +employee.annualSalary;
   }, 0);
   const totalMonthlyValue = (total / 12).toFixed(2);
-  if (totalMonthlyValue > 10000) {
+  if (totalMonthlyValue > currentMonthlyBudget) {
     totalMonthly.classList.remove('text-slate-800');
     totalMonthly.classList.add('bg-red-500', 'text-white');
     return convertToCurrency(totalMonthlyValue);
@@ -119,4 +119,14 @@ const getTotalMonthly = () => {
   totalMonthly.classList.remove('bg-red-500', 'text-white');
   totalMonthly.classList.add('text-slate-800');
   return convertToCurrency(totalMonthlyValue);
+};
+
+const updateMonthlyBudget = () => {
+  const parsed = convertFromCurrency(monthlyBudgetValue.value);
+  if (parsed === 0) {
+    return;
+  }
+
+  currentMonthlyBudget = parsed;
+  totalMonthly.innerHTML = `Total Monthly: ${getTotalMonthly()}`;
 };
