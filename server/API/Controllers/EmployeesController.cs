@@ -1,15 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
 using API.Model;
+using API.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
 
-[ApiController]
-[Route("api/[controller]")]
-public class EmployeesController : ControllerBase
+public class EmployeesController : BaseApiController
 {
-    [HttpGet] // api/employees
-    public IActionResult Get()
+    private readonly DataContext _context;
+
+    public EmployeesController(DataContext context)
     {
-        return Ok();
+        _context = context;
+    }
+
+    [HttpGet] // api/activities
+    public async Task<ActionResult<List<Employee>>> GetEmployees()
+    {
+        return await _context.Employees.ToListAsync();
     }
 }
