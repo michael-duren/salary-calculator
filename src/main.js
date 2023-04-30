@@ -34,6 +34,7 @@ const employees = [
 // add initial employees to table
 for (let employee of employees) {
   table.innerHTML += addEmployee(employee);
+  console.log(convertToCurrency(employee.annualSalary));
 }
 
 // render chart

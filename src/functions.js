@@ -1,3 +1,17 @@
+const convertFromCurrency = (currency) => {
+  return +currency.replace(/[$,]/g, '');
+};
+
+const convertToCurrency = (currency) => {
+  const formatter = Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    trailingZeroDisplay: 'stripIfInteger',
+  });
+
+  return formatter.format(currency);
+};
+
 const createNewChart = (employees, ctx) => {
   const names = employees.map((employee) => {
     return employee.firstName;
@@ -35,7 +49,7 @@ const addEmployee = (employee) => {
             <div class="col-span-2">${lastName}</div>
             <div class="col-span-2">${employeeId}</div>
             <div class="col-span-2">${title}</div>
-            <div class="col-span-2">${annualSalary}</div>
+            <div class="col-span-2">${convertToCurrency(annualSalary)}</div>
             <div class="col-span-1 flex items-start justify-start">
               <div onclick="onRemove(${employeeId})" class="cursor-pointer">
                 <svg class="h-5 text-slate-600 hover:text-slate-900" xmlns="http://www.w3.org/2000/svg" fill="none"
