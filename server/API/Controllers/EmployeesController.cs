@@ -14,7 +14,7 @@ public class EmployeesController : BaseApiController
         _context = context;
     }
 
-    [HttpGet] // api/activities
+    [HttpGet] // api/employees
     public async Task<ActionResult<List<Employee>>> GetEmployees()
     {
         return await _context.Employees.ToListAsync();
