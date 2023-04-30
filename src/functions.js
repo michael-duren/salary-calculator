@@ -80,7 +80,7 @@ const onSubmit = (event) => {
     chart.destroy();
   }
   chart = createNewChart(employees, ctx);
-  totalMonthly.innerHTML = `Total Monthly: $${getTotalMonthly()}`;
+  totalMonthly.innerHTML = `Total Monthly: ${getTotalMonthly()}`;
 
   // clear input fields
   firstName.value = '';
@@ -103,7 +103,7 @@ const onRemove = (id) => {
     chart.destroy();
   }
   chart = createNewChart(employees, ctx);
-  totalMonthly.innerHTML = `Total Monthly: $${getTotalMonthly()}`;
+  totalMonthly.innerHTML = `Total Monthly: ${getTotalMonthly()}`;
 };
 
 const getTotalMonthly = () => {
@@ -111,12 +111,12 @@ const getTotalMonthly = () => {
     return acc + +employee.annualSalary;
   }, 0);
   const totalMonthlyValue = (total / 12).toFixed(2);
-  if (totalMonthlyValue > 20000) {
+  if (totalMonthlyValue > 10000) {
     totalMonthly.classList.remove('text-slate-800');
     totalMonthly.classList.add('bg-red-500', 'text-white');
-    return totalMonthlyValue;
+    return convertToCurrency(totalMonthlyValue);
   }
   totalMonthly.classList.remove('bg-red-500', 'text-white');
   totalMonthly.classList.add('text-slate-800');
-  return totalMonthlyValue;
+  return convertToCurrency(totalMonthlyValue);
 };
