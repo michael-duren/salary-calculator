@@ -66,7 +66,7 @@ const onSubmit = (event) => {
     chart.destroy();
   }
   chart = createNewChart(employees, ctx);
-  totalMonthly.innerHTML = `Total Monthly: ${getTotalMonthly()}`;
+  totalMonthly.innerHTML = `Total Monthly: $${getTotalMonthly()}`;
 
   // clear input fields
   firstName.value = '';
