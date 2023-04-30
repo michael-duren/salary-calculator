@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "z0lsgsQd1FRQY+jCazEZBV/YYzxHWEV4g9gIBbyi6IoG4Dxy/zDe2xa+bsuoclPvLBwijmOiRms0S6sckOtBCA==",
+  "success": true,
+  "projectFilePath": "/Users/michaelduren/prime/assignments/unit-2/salary-calculator/server/API/API.csproj",
+  "expectedPackageFiles": [
+    "/Users/michaelduren/.nuget/packages/microsoft.aspnetcore.openapi/7.0.4/microsoft.aspnetcore.openapi.7.0.4.nupkg.sha512",
+    "/Users/michaelduren/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/Users/michaelduren/.nuget/packages/microsoft.openapi/1.4.3/microsoft.openapi.1.4.3.nupkg.sha512",
+    "/Users/michaelduren/.nuget/packages/swashbuckle.aspnetcore/6.4.0/swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "/Users/michaelduren/.nuget/packages/swashbuckle.aspnetcore.swagger/6.4.0/swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "/Users/michaelduren/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.4.0/swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "/Users/michaelduren/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.4.0/swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
