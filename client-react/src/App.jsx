@@ -41,6 +41,14 @@ function App() {
     event.preventDefault();
   };
 
+  const updateMonthlyBudget = () => {
+    console.log('updated');
+  };
+
+  const onRemove = () => {
+    console.log('removed');
+  };
+
   return (
     <>
       <header className="flex mx-20 mt-4 items-center justify-start  border-b-2 py-4">
@@ -50,7 +58,7 @@ function App() {
         <div className="flex flex-col">
           <h2 className="text-2xl m-4">Add Employee</h2>
           <form
-            onSubmit={onSubmit(event)}
+            onSubmit={onSubmit}
             className="flex items-start justify-between m-4 border-b-2 py-8"
           >
             <input
@@ -117,16 +125,13 @@ function App() {
                         {convertToCurrency(salary)}
                       </div>
                       <div className="col-span-1 flex items-start justify-start">
-                        <div
-                          onClick="onRemove(${employeeId})"
-                          className="cursor-pointer"
-                        >
+                        <div onClick={onRemove} className="cursor-pointer">
                           <svg
-                            className=" w-6 h-6 text-slate-600 hover:text-slate-900"
+                            className=" w-5 h-5 text-slate-600 hover:text-slate-900"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
-                            strokeWidth={3}
+                            strokeWidth={1}
                             stroke="currentColor"
                           >
                             <path
@@ -167,7 +172,7 @@ function App() {
                 placeholder="$20,000"
               />
               <button
-                onClick="updateMonthlyBudget()"
+                onClick={updateMonthlyBudget}
                 className="ml-2 text-blue-500 hover:text-blue-700"
               >
                 Update
