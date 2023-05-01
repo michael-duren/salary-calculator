@@ -8,27 +8,17 @@ import NewEmployeeForm from './components/forms/NewEmployeeForm';
 import EmployeeTable from './components/tables/EmployeeTable';
 import MonthlyBudget from './components/budget/MonthlyBudget';
 import Header from './components/header/Header';
+import { formatChartData } from './utils/formatChartData';
 
 Chart.register(CategoryScale);
 
 function App() {
   const [employees, setEmployees] = useState([]);
-  const [chartData, setChartData] = useState({});
 
   useEffect(() => {
     const fetchEmployees = async () => {
       axios.get('http://localhost:5145/api/employees').then((response) => {
         setEmployees(response.data);
-        setChartData({
-          labels: response.data.map((employee) => employee.firstName),
-          datasets: [
-            {
-              label: 'Employee Salary',
-              data: response.data.map((employee) => employee.salary),
-              borderWidth: 1,
-            },
-          ],
-        });
       });
     };
     fetchEmployees().catch((error) => console.log(error));
@@ -39,14 +29,14 @@ function App() {
       <Header />
       <main className="mx-16 my-8 ">
         <NewEmployeeForm employees={employees} setEmployees={setEmployees} />
-
         <div className="flex border-b-2 pb-4 space-x-4 mt-8">
           <EmployeeTable setEmployees={setEmployees} employees={employees} />
-          {chartData.datasets && (
-            <div className="flex-1">
-              <BarChart options={options} chartData={chartData} />
-            </div>
-          )}
+          <div className="flex-1">
+            <BarChart
+              options={options}
+              chartData={formatChartData(employees)}
+            />
+          </div>
         </div>
       </main>
       <footer>
