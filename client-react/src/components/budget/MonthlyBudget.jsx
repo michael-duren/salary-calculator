@@ -22,12 +22,17 @@ export default function MonthlyBudget(props) {
     <div className="flex mx-16 mb-16 justify-start">
       <div>
         {total > convertFromCurrency(budget) ? (
-          <h2
-            id="total-monthly"
-            className="text-white bg-red-500 rounded-md p-2 text-4xl"
-          >
-            Total Monthly: {convertToCurrency(total)}
-          </h2>
+          <>
+            <h2
+              id="total-monthly"
+              className="text-white bg-red-500 rounded-md p-2 text-4xl"
+            >
+              Total Monthly: {convertToCurrency(total)}
+            </h2>
+            <p className="text-red-500">
+              Warning! You are over your monthly budget
+            </p>
+          </>
         ) : (
           <h2
             id="total-monthly"
@@ -36,7 +41,7 @@ export default function MonthlyBudget(props) {
             Total Monthly: {convertToCurrency(total)}
           </h2>
         )}
-        <div className="mt-4 space-x-4 flex items-center">
+        <div className="mt-4 text-xl mx-4 space-x-2 flex items-center">
           <div>Monthly Budget:</div>
           {!editOpen ? (
             <>
@@ -60,13 +65,13 @@ export default function MonthlyBudget(props) {
               />
               <button
                 onClick={updateMonthlyBudget}
-                className="ml-2 text-blue-500 hover:text-blue-700"
+                className="ml-2 text-base text-blue-500 hover:text-blue-700"
               >
                 Update
               </button>
               <button
                 onClick={() => setEditOpen(false)}
-                className="ml-2 text-red-500 hover:text-blue-700"
+                className="ml-2 text-red-500 text-base hover:text-red-700"
               >
                 Cancel
               </button>
