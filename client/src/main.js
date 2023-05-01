@@ -1,7 +1,3 @@
-axios.get('http://localhost:5145/api/employees').then((response) => {
-  return console.log(response.data);
-});
-
 // global variables
 
 // inputs
