@@ -1,4 +1,7 @@
 export const convertFromCurrency = (currency) => {
+  if (typeof currency === 'number') {
+    return;
+  }
   return +currency.replace(/[$,]/g, '');
 };
 

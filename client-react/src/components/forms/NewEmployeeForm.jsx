@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { convertFromCurrency } from '../../utils/currency';
 import { v4 as uuid } from 'uuid';
 
 export default function NewEmployeeForm(props) {
@@ -20,7 +21,10 @@ export default function NewEmployeeForm(props) {
 
   const addEmployee = (event, employee) => {
     event.preventDefault();
-    setEmployees([...employees, { ...employee, id: uuid() }]);
+    setEmployees([
+      ...employees,
+      { ...employee, salary: convertFromCurrency(employee.salary), id: uuid() },
+    ]);
     setEmployee(initialState);
   };
 
