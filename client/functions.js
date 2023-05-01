@@ -1,4 +1,7 @@
 const convertFromCurrency = (currency) => {
+  if (!currency) {
+    return;
+  }
   return +currency.replace(/[$,]/g, '');
 };
 
