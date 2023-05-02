@@ -1,11 +1,21 @@
 import { IoRemoveCircleOutline } from 'react-icons/io5';
 import { convertToCurrency } from '../../utils/currency';
+import agent from '../../api/agent';
+import Spinner from '../spinner/Spinner';
+import { useState } from 'react';
 
 export default function EmployeeTable(props) {
   const { employees, setEmployees } = props;
+  const [loading, setLoading] = useState(false);
+  const [target, setTarget] = useState('');
 
-  const onRemoveEmployee = (id) => {
-    setEmployees(employees.filter((employee) => employee.id !== id));
+  const onRemoveEmployee = (e, id) => {
+    setTarget(e.currentTarget.name);
+    setLoading(true);
+    agent.Employees.delete(id).then(() => {
+      setEmployees(employees.filter((employee) => employee.id !== id));
+      setLoading(false);
+    });
   };
 
   return (
@@ -32,12 +42,18 @@ export default function EmployeeTable(props) {
                 <div className="col-span-2">{title}</div>
                 <div className="col-span-2">{convertToCurrency(salary)}</div>
                 <div className="col-span-1 flex items-start justify-start">
-                  <div
-                    onClick={() => onRemoveEmployee(id)}
+                  <button
+                    onClick={(e) => onRemoveEmployee(e, id)}
                     className="cursor-pointer"
+                    name={id}
                   >
-                    <IoRemoveCircleOutline size={20} />
-                  </div>
+                    {' '}
+                    {loading && target === id ? (
+                      <Spinner size={15} />
+                    ) : (
+                      <IoRemoveCircleOutline size={20} />
+                    )}
+                  </button>
                 </div>
               </div>
             );

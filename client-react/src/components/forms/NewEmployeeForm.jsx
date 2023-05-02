@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { convertFromCurrency } from '../../utils/currency';
 import { v4 as uuid } from 'uuid';
+import agent from '../../api/agent';
+import Spinner from '../spinner/Spinner';
 
 export default function NewEmployeeForm(props) {
   const { employees, setEmployees } = props;
+  const [loading, setLoading] = useState(false);
   const initialState = {
     id: '',
     firstName: '',
@@ -21,10 +24,13 @@ export default function NewEmployeeForm(props) {
 
   const addEmployee = (event, employee) => {
     event.preventDefault();
-    setEmployees([
-      ...employees,
-      { ...employee, salary: convertFromCurrency(employee.salary), id: uuid() },
-    ]);
+    setLoading(true);
+    employee.id = uuid();
+    employee.salary = convertFromCurrency(employee.salary);
+    agent.Employees.create(employee).then(() => {
+      setEmployees([...employees, employee]);
+      setLoading(false);
+    });
     setEmployee(initialState);
   };
 
@@ -81,10 +87,10 @@ export default function NewEmployeeForm(props) {
           required
         />
         <button
-          className="bg-gray-800 shadow-md rounded-md px-3 py-2 hover:scale-105 focus:bg-slate-700 focus:scale-100  text-slate-100"
+          className="bg-gray-800 flex items-center justify-center h-10 w-20 shadow-md rounded-md  hover:scale-105 focus:bg-slate-700 focus:scale-100  text-slate-100"
           type="submit"
         >
-          Submit
+          {loading ? <Spinner size={15} color="white" /> : <div>Submit</div>}
         </button>
       </form>
     </div>

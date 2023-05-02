@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import Chart from 'chart.js/auto';
 import { BarChart } from './components/charts/BarChart';
 import { CategoryScale } from 'chart.js';
@@ -16,14 +15,19 @@ Chart.register(CategoryScale);
 
 function App() {
   const [employees, setEmployees] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    agent.Employees.list().then((response) => setEmployees(response));
+    setLoading(true);
+    agent.Employees.list().then((response) => {
+      setLoading(false);
+      return setEmployees(response);
+    });
   }, []);
 
-  // if (!employees.length) {
-  //   return <Spinner message="Loading Employees..." />;
-  // }
+  if (loading) {
+    return <Spinner full={true} message="Loading Employees..." />;
+  }
 
   return (
     <>

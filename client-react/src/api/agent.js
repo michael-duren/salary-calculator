@@ -2,6 +2,21 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:5145/api';
 
+// used to mock a loading time from server
+const sleep = (delay) => {
+  return new Promise((resolve) => setTimeout(resolve, delay));
+};
+
+axios.interceptors.response.use(async (response) => {
+  try {
+    await sleep(2000);
+    return response;
+  } catch (e) {
+    console.log(e);
+    return await Promise.reject(e);
+  }
+});
+
 const responseBody = (response) => response.data;
 
 const requests = {
