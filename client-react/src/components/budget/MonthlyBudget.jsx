@@ -16,7 +16,6 @@ export default function MonthlyBudget(props) {
     setBudget(budgetInput);
     setEditOpen(false);
   };
-  console.log(employees);
 
   return (
     <div className="flex mx-16 mb-16 justify-start">

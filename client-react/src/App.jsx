@@ -9,6 +9,8 @@ import EmployeeTable from './components/tables/EmployeeTable';
 import MonthlyBudget from './components/budget/MonthlyBudget';
 import Header from './components/header/Header';
 import { formatChartData } from './utils/formatChartData';
+import agent from './api/agent';
+import Spinner from './components/spinner/Spinner';
 
 Chart.register(CategoryScale);
 
@@ -16,13 +18,12 @@ function App() {
   const [employees, setEmployees] = useState([]);
 
   useEffect(() => {
-    const fetchEmployees = async () => {
-      axios.get('http://localhost:5145/api/employees').then((response) => {
-        setEmployees(response.data);
-      });
-    };
-    fetchEmployees().catch((error) => console.log(error));
+    agent.Employees.list().then((response) => setEmployees(response));
   }, []);
+
+  // if (!employees.length) {
+  //   return <Spinner message="Loading Employees..." />;
+  // }
 
   return (
     <>
