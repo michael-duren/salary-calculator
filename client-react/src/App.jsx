@@ -4,7 +4,7 @@ import { BarChart } from './components/charts/BarChart';
 import { CategoryScale } from 'chart.js';
 import { options } from './components/charts/BarChart';
 import NewEmployeeForm from './components/forms/NewEmployeeForm';
-import EmployeeTable from './components/tables/EmployeeTable';
+import EmployeeTable from './components/tables/employee-table/EmployeeTable';
 import MonthlyBudget from './components/budget/MonthlyBudget';
 import Header from './components/header/Header';
 import { formatChartData } from './utils/formatChartData';

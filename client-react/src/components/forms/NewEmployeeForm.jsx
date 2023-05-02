@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { convertFromCurrency } from '../../utils/currency';
 import { v4 as uuid } from 'uuid';
 import agent from '../../api/agent';
@@ -36,7 +37,10 @@ export default function NewEmployeeForm(props) {
 
   return (
     <div className="flex flex-col">
-      <h2 className="text-2xl mx-4">Add Employee</h2>
+      <h2 className="text-2xl flex items-center mx-4">
+        <AiOutlinePlusCircle className="mr-2 text-gray-700" />
+        Add Employee
+      </h2>
       <form
         onSubmit={(event) => addEmployee(event, employee)} //
         className="flex items-start justify-between m-4 border-b-2 py-8"
