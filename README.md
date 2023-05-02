@@ -2,6 +2,10 @@
 
 Salary Calculator is a budgeting app for employees to keep track of their staff expenses. It includes a chart to represent which employees have the highest salaries.
 
+## Demo
+
+![demo gif](./documentation/assets/Demo.gif)
+
 ## Usage
 
 ### Structure

@@ -32,7 +32,7 @@ function App() {
   return (
     <>
       <Header />
-      <main className="mx-16 my-8 ">
+      <main className="mx-16 my-6 ">
         <NewEmployeeForm employees={employees} setEmployees={setEmployees} />
         <div className="flex border-b-2 pb-4 space-x-4 mt-8">
           <EmployeeTable setEmployees={setEmployees} employees={employees} />

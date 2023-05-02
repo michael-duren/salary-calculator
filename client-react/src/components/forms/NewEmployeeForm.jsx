@@ -36,7 +36,7 @@ export default function NewEmployeeForm(props) {
 
   return (
     <div className="flex flex-col">
-      <h2 className="text-2xl m-4">Add Employee</h2>
+      <h2 className="text-2xl mx-4">Add Employee</h2>
       <form
         onSubmit={(event) => addEmployee(event, employee)} //
         className="flex items-start justify-between m-4 border-b-2 py-8"

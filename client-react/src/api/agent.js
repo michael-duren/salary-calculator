@@ -9,7 +9,7 @@ const sleep = (delay) => {
 
 axios.interceptors.response.use(async (response) => {
   try {
-    await sleep(2000);
+    await sleep(600);
     return response;
   } catch (e) {
     console.log(e);
