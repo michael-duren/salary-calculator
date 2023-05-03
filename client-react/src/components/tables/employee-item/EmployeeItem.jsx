@@ -59,7 +59,9 @@ export default function EmployeeItem(props) {
                 name={id}
               >
                 {loading && target === id ? (
-                  <Spinner size={15} />
+                  <div className="mx-2">
+                    <Spinner size={15} />
+                  </div>
                 ) : (
                   <div className="ml-4 text-base text-red-500 hover:text-red-700">
                     Delete
@@ -80,11 +82,13 @@ export default function EmployeeItem(props) {
             <div className="col-span-2 flex items-start justify-start">
               <button
                 className="cursor-pointer"
-                onClick={() =>
+                onClick={(e) =>
                   onUpdateEmployee(
+                    e,
                     editEmployee,
                     isEditMenuOpen,
-                    setIsEditMenuOpen
+                    setIsEditMenuOpen,
+                    setTarget
                   )
                 }
                 name={id}

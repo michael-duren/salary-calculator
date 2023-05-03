@@ -8,11 +8,14 @@ export default function EmployeeTable(props) {
   const [loading, setLoading] = useState(false);
 
   const onUpdateEmployee = (
+    e,
     editedEmployee,
     isEditMenuOpen,
-    setIsEditMenuOpen
+    setIsEditMenuOpen,
+    setTarget
   ) => {
     setLoading(true);
+    setTarget(e.currentTarget.name);
     agent.Employees.update(editedEmployee)
       .then(() => {
         setEmployees([
@@ -49,7 +52,7 @@ export default function EmployeeTable(props) {
           <div className="col-span-2">Salary</div>
           <div className="col-span-2"></div>
         </div>
-        {employees.length &&
+        {employees.length > 0 ? (
           employees.map((employee) => {
             return (
               <EmployeeItem
@@ -62,7 +65,13 @@ export default function EmployeeTable(props) {
                 onRemoveEmployee={onRemoveEmployee}
               />
             );
-          })}
+          })
+        ) : (
+          <div className="mt-4 text-red-500">
+            <p>You have no employees 😢,</p>
+            <p> Add some above</p>
+          </div>
+        )}
       </div>
     </div>
   );
