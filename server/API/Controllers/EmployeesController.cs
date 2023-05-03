@@ -42,7 +42,7 @@ public class EmployeesController : BaseApiController
         return CreatedAtAction(nameof(GetEmployee), new { id = employee.Id }, employee);
     }
 
-    [HttpPut] // api/employees
+    [HttpPut("{id}")] // api/employees
     public async Task<ActionResult<Employee>> UpdateEmployee(Guid id, EmployeeDTO employeeDTO)
     {
         if (id != employeeDTO.Id)

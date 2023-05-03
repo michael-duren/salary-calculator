@@ -1,6 +1,7 @@
 import { BsPersonCircle } from 'react-icons/bs';
 import { useState } from 'react';
 import EmployeeItem from '../employee-item/EmployeeItem';
+import agent from '../../../api/agent';
 
 export default function EmployeeTable(props) {
   const { employees, setEmployees } = props;
@@ -11,12 +12,17 @@ export default function EmployeeTable(props) {
     isEditMenuOpen,
     setIsEditMenuOpen
   ) => {
-    setEmployees([
-      ...employees.filter((employee) => employee.id !== editedEmployee.id),
-      { ...editedEmployee, salary: Number(editedEmployee.salary) },
-    ]);
-
-    setIsEditMenuOpen(!isEditMenuOpen);
+    setLoading(true);
+    agent.Employees.update(editedEmployee)
+      .then(() => {
+        setEmployees([
+          ...employees.filter((employee) => employee.id !== editedEmployee.id),
+          { ...editedEmployee, salary: Number(editedEmployee.salary) },
+        ]);
+        setLoading(false);
+        setIsEditMenuOpen(!isEditMenuOpen);
+      })
+      .catch((e) => console.log(e));
   };
 
   return (
