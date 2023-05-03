@@ -25,6 +25,15 @@ export default function EmployeeTable(props) {
       .catch((e) => console.log(e));
   };
 
+  const onRemoveEmployee = (e, id, setTarget) => {
+    setTarget(e.currentTarget.name);
+    setLoading(true);
+    agent.Employees.delete(id).then(() => {
+      setEmployees(employees.filter((employee) => employee.id !== id));
+      setLoading(false);
+    });
+  };
+
   return (
     <div className="flex-1">
       <h2 className="text-2xl  flex items-center justify-start mb-8 m-4">
@@ -50,6 +59,7 @@ export default function EmployeeTable(props) {
                 setLoading={setLoading}
                 setEmployees={setEmployees}
                 onUpdateEmployee={onUpdateEmployee}
+                onRemoveEmployee={onRemoveEmployee}
               />
             );
           })}

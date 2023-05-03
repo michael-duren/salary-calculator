@@ -1,29 +1,17 @@
 import { useState } from 'react';
-import {
-  convertFromCurrency,
-  convertToCurrency,
-} from '../../../utils/currency';
-import agent from '../../../api/agent';
+import { convertFromCurrency } from '../../../utils/currency';
 import Spinner from '../../spinner/Spinner';
 import { HiPencilAlt } from 'react-icons/hi';
+import { RxExit } from 'react-icons/rx';
+import EmployeeInformation from '../employee-information/EmployeeInformation';
 
 export default function EmployeeItem(props) {
-  const { employee, loading, setLoading, setEmployees, onUpdateEmployee } =
-    props;
+  const { employee, loading, onRemoveEmployee, onUpdateEmployee } = props;
   const [target, setTarget] = useState('');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isEditMenuOpen, setIsEditMenuOpen] = useState(false);
   const [editEmployee, setEditEmployee] = useState(employee);
-  const { id, employeeId, firstName, lastName, title, salary } = editEmployee;
-
-  const onRemoveEmployee = (e, id) => {
-    setTarget(e.currentTarget.name);
-    setLoading(true);
-    agent.Employees.delete(id).then(() => {
-      setEmployees(employees.filter((employee) => employee.id !== id));
-      setLoading(false);
-    });
-  };
+  const { id, salary } = editEmployee;
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -33,61 +21,18 @@ export default function EmployeeItem(props) {
     setEditEmployee({ ...editEmployee, [name]: value });
   };
   return (
-    <div key={employeeId} className="p-2 grid grid-cols-12">
-      {isEditMenuOpen ? (
-        <>
-          <input
-            value={firstName}
-            type="text"
-            className="p-1 border-2 rounded-md border-gray-300 col-span-2 w-28"
-            onChange={handleInputChange}
-            name="firstName"
-          />
-          <input
-            type="text"
-            value={lastName}
-            className="p-1 border-2 rounded-md border-gray-300 col-span-2 w-28"
-            onChange={handleInputChange}
-            name="lastName"
-          />
-          <input
-            type="number"
-            value={employeeId}
-            className="p-1 border-2 rounded-md border-gray-300 col-span-2 w-28"
-            onChange={handleInputChange}
-            name="employeeId"
-          />
-          <input
-            type="text"
-            value={title}
-            className="p-1 border-2 rounded-md border-gray-300 col-span-2 w-28"
-            onChange={handleInputChange}
-            name="title"
-          />
-          <input
-            type="number"
-            value={salary}
-            className="p-1 border-2 rounded-md border-gray-300 col-span-2 w-28"
-            onChange={handleInputChange}
-            name="salary"
-          />
-        </>
-      ) : (
-        <>
-          <div className="col-span-2 p-1">{employee.firstName}</div>
-          <div className="col-span-2 p-1">{employee.lastName}</div>
-          <div className="col-span-2 p-1">{employee.employeeId}</div>
-          <div className="col-span-2 p-1">{employee.title}</div>
-          <div className="col-span-2 p-1">
-            {convertToCurrency(employee.salary)}
-          </div>
-        </>
-      )}
+    <div className="p-2 grid grid-cols-12">
+      <EmployeeInformation
+        employee={employee}
+        editEmployee={editEmployee}
+        handleInputChange={handleInputChange}
+        isEditMenuOpen={isEditMenuOpen}
+      />
       {/* Buttons */}
       {!isMenuOpen ? (
         <button
           onClick={() => setIsMenuOpen(!isEditMenuOpen)}
-          className="flex items-center justify-center"
+          className="flex mb-8 items-center justify-center"
         >
           <HiPencilAlt
             className="text-gray-500 hover:text-gray-700"
@@ -104,24 +49,19 @@ export default function EmployeeItem(props) {
                 name={id}
               >
                 {' '}
-                {loading && target === id ? (
-                  <Spinner size={15} />
-                ) : (
-                  <div className="text-base text-blue-500 hover:text-blue-700">
-                    Edit
-                  </div>
-                )}
+                <div className="text-base text-blue-500 hover:text-blue-700">
+                  Edit
+                </div>
               </button>
               <button
-                onClick={(e) => onRemoveEmployee(e, id)}
+                onClick={(e) => onRemoveEmployee(e, id, setTarget)}
                 className="cursor-pointer"
                 name={id}
               >
-                {' '}
                 {loading && target === id ? (
                   <Spinner size={15} />
                 ) : (
-                  <div className="ml-6 text-base text-red-500 hover:text-red-700">
+                  <div className="ml-4 text-base text-red-500 hover:text-red-700">
                     Delete
                   </div>
                 )}
@@ -131,14 +71,9 @@ export default function EmployeeItem(props) {
                 className="cursor-pointer"
                 name={id}
               >
-                {' '}
-                {loading && target === id ? (
-                  <Spinner size={15} />
-                ) : (
-                  <div className="ml-6 text-base text-gray-500 hover:text-gray-700">
-                    X
-                  </div>
-                )}
+                <div className="ml-4 flex items-center justify-center text-base text-gray-500 hover:text-gray-700">
+                  <RxExit size={16} />
+                </div>
               </button>
             </div>
           ) : (
@@ -168,14 +103,9 @@ export default function EmployeeItem(props) {
                 className="cursor-pointer"
                 name={id}
               >
-                {' '}
-                {loading && target === id ? (
-                  <Spinner size={15} />
-                ) : (
-                  <div className="ml-6 text-base text-blue-500 hover:text-blue-700">
-                    Back
-                  </div>
-                )}
+                <div className="ml-6 text-base text-blue-500 hover:text-blue-700">
+                  Back
+                </div>
               </button>
             </div>
           )}

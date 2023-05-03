@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { convertToCurrency, convertFromCurrency } from '../../utils/currency';
-import { AiOutlineEdit } from 'react-icons/ai';
+import { HiPencilAlt } from 'react-icons/hi';
 
 export default function MonthlyBudget(props) {
   const { employees } = props;
@@ -47,9 +47,9 @@ export default function MonthlyBudget(props) {
               <div>{budget}</div>
               <button
                 onClick={() => setEditOpen(true)}
-                className="flex items-center justify-center"
+                className="flex text-gray-500 hover:text-gray-700 items-center justify-center"
               >
-                <AiOutlineEdit size={20} />
+                <HiPencilAlt size={20} />
               </button>
             </>
           ) : (
