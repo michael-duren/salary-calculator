@@ -17,6 +17,7 @@ export default function NewEmployeeForm(props) {
     salary: '',
   };
   const [employee, setEmployee] = useState(initialState);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   const addEmployee = (event, employee) => {
     event.preventDefault();
@@ -35,67 +36,78 @@ export default function NewEmployeeForm(props) {
   };
 
   return (
-    <div className="flex flex-col">
-      <h2 className="text-2xl flex items-center mx-4">
-        <AiOutlinePlusCircle className="mr-2 text-gray-700" />
+    <div className="flex flex-col mx-4 pb-8 border-b-2">
+      <h2
+        onClick={() => setIsFormOpen(!isFormOpen)}
+        className="text-2xl flex text-gray-700 hover:text-gray-900 cursor-pointer items-center mx-4"
+      >
+        <AiOutlinePlusCircle className="mr-2 " />
         Add Employee
       </h2>
-      <form
-        onSubmit={(event) => addEmployee(event, employee)} //
-        className="flex items-start justify-between m-4 border-b-2 py-8"
-      >
-        <input
-          value={employee.firstName}
-          onChange={handleInputChange}
-          className="p-2 border-b-2"
-          type="text"
-          name="firstName"
-          placeholder="First Name"
-          required
-        />
-        <input
-          value={employee.lastName}
-          onChange={handleInputChange}
-          className="p-2 border-b-2"
-          name="lastName"
-          type="text"
-          placeholder="Last Name"
-          required
-        />
-        <input
-          value={employee.employeeId}
-          onChange={handleInputChange}
-          className="p-2 border-b-2"
-          name="employeeId"
-          type="text"
-          placeholder="ID"
-          required
-        />
-        <input
-          value={employee.title}
-          onChange={handleInputChange}
-          name="title"
-          className="p-2 border-b-2"
-          type="text"
-          placeholder="Title"
-          required
-        />
-        <input
-          value={employee.salary}
-          onChange={handleInputChange}
-          className="p-2 border-b-2"
-          type="text"
-          name="salary"
-          placeholder="Anual Salary"
-          required
-        />
-        <button
-          className="bg-gray-800 flex items-center justify-center h-10 w-20 shadow-md rounded-md  hover:scale-105 focus:bg-slate-700 focus:scale-100  text-slate-100"
-          type="submit"
-        >
-          {loading ? <Spinner size={15} color="white" /> : <div>Submit</div>}
-        </button>
-      </form>
+      {isFormOpen && (
+        <>
+          <form
+            onSubmit={(event) => addEmployee(event, employee)} //
+            className="flex items-start justify-between my-4  "
+          >
+            <input
+              value={employee.firstName}
+              onChange={handleInputChange}
+              className="p-2 border-b-2"
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              required
+            />
+            <input
+              value={employee.lastName}
+              onChange={handleInputChange}
+              className="p-2 border-b-2"
+              name="lastName"
+              type="text"
+              placeholder="Last Name"
+              required
+            />
+            <input
+              value={employee.employeeId}
+              onChange={handleInputChange}
+              className="p-2 border-b-2"
+              name="employeeId"
+              type="text"
+              placeholder="ID"
+              required
+            />
+            <input
+              value={employee.title}
+              onChange={handleInputChange}
+              name="title"
+              className="p-2 border-b-2"
+              type="text"
+              placeholder="Title"
+              required
+            />
+            <input
+              value={employee.salary}
+              onChange={handleInputChange}
+              className="p-2 border-b-2"
+              type="text"
+              name="salary"
+              placeholder="Anual Salary"
+              required
+            />
+            <button
+              className="bg-gray-800 flex items-center justify-center h-10 w-20 shadow-md rounded-md  hover:scale-105 focus:bg-slate-700 focus:scale-100  text-slate-100"
+              type="submit"
+            >
+              {loading ? (
+                <Spinner size={15} color="white" />
+              ) : (
+                <div>Submit</div>
+              )}
+            </button>
+          </form>
+        </>
+      )}
     </div>
   );
 }

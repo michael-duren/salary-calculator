@@ -40,7 +40,7 @@ export default function MonthlyBudget(props) {
             Total Monthly: {convertToCurrency(total)}
           </h2>
         )}
-        <div className="mt-4 text-xl mx-4 space-x-2 flex items-center">
+        <div className="mt-4 text-gray-700 text-xl mx-4 space-x-2 flex items-center">
           <div>Monthly Budget:</div>
           {!editOpen ? (
             <>
@@ -49,7 +49,7 @@ export default function MonthlyBudget(props) {
                 onClick={() => setEditOpen(true)}
                 className="flex text-gray-500 hover:text-gray-700 items-center justify-center"
               >
-                <HiPencilAlt size={20} />
+                <HiPencilAlt className="mb-2" size={24} />
               </button>
             </>
           ) : (
