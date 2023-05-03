@@ -4,7 +4,7 @@ Salary Calculator is a budgeting app for employees to keep track of their staff 
 
 ## Demo
 
-![demo gif](./documentation/assets/Demo.gif)
+![demo gif](./documentation/assets/Demo-Salary-Calc.mp4)
 
 ## Usage
 
