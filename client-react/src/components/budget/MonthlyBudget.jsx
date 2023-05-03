@@ -44,7 +44,7 @@ export default function MonthlyBudget(props) {
           <div>Monthly Budget:</div>
           {!editOpen ? (
             <>
-              <div>{budget}</div>
+              <div className="p-2">{budget}</div>
               <button
                 onClick={() => setEditOpen(true)}
                 className="flex text-gray-500 hover:text-gray-700 items-center justify-center"
