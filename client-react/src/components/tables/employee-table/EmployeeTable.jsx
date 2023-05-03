@@ -6,6 +6,19 @@ export default function EmployeeTable(props) {
   const { employees, setEmployees } = props;
   const [loading, setLoading] = useState(false);
 
+  const onUpdateEmployee = (
+    editedEmployee,
+    isEditMenuOpen,
+    setIsEditMenuOpen
+  ) => {
+    setEmployees([
+      ...employees.filter((employee) => employee.id !== editedEmployee.id),
+      { ...editedEmployee, salary: Number(editedEmployee.salary) },
+    ]);
+
+    setIsEditMenuOpen(!isEditMenuOpen);
+  };
+
   return (
     <div className="flex-1">
       <h2 className="text-2xl  flex items-center justify-start mb-8 m-4">
@@ -25,10 +38,12 @@ export default function EmployeeTable(props) {
           employees.map((employee) => {
             return (
               <EmployeeItem
+                key={employee.id}
                 employee={employee}
                 loading={loading}
                 setLoading={setLoading}
                 setEmployees={setEmployees}
+                onUpdateEmployee={onUpdateEmployee}
               />
             );
           })}
