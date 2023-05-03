@@ -18,11 +18,6 @@ export default function NewEmployeeForm(props) {
   };
   const [employee, setEmployee] = useState(initialState);
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setEmployee({ ...employee, [name]: value });
-  };
-
   const addEmployee = (event, employee) => {
     event.preventDefault();
     setLoading(true);
@@ -33,6 +28,10 @@ export default function NewEmployeeForm(props) {
       setLoading(false);
     });
     setEmployee(initialState);
+  };
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setEmployee({ ...employee, [name]: value });
   };
 
   return (
