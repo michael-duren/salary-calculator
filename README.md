@@ -31,7 +31,6 @@ git clone https://github.com/michael-duren/salary-calculator.git
 #### Vainlla JS Demo (`/client`)
 
 ```bash
-git clone https://github.com/michael-duren/salary-calculator.git
 cd client/src
 open index.html
 ```
