@@ -22,6 +22,12 @@ This repository contains two different projects.
 
 ### Instructions
 
+#### Clone the repository
+
+```bash
+git clone https://github.com/michael-duren/salary-calculator.git
+```
+
 #### Vainlla JS Demo (`/client`)
 
 ```bash
