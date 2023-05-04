@@ -28,7 +28,7 @@ cd client/src
 open index.html
 ```
 
-#### React-.NET (`/client-react & /server`)
+#### React-.NET (`/server`)
 
 ##### .NET Setup
 
@@ -38,6 +38,8 @@ This project also includes the Swagger UI for testing the .NET API endpoints.
 ```bash
 cd server/API
 
+# the client app is being served on losthost:5145
+
 # run with swagger UI
 dotnet watch # this will open the Swagger UI and run the server
 
@@ -45,8 +47,10 @@ dotnet watch # this will open the Swagger UI and run the server
 dotnet run # this will just run the server
 ```
 
-##### React Setup
+#### React Dev Server Setup
 
+- If you want to run the Vite development server you can follow the instructions below.
+- Vite dev server Port is 5173
 - Must have npm installed
 
 ```bash
