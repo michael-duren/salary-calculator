@@ -18,6 +18,8 @@ This repository contains two different projects.
 
 - Instructions to run each project are below
 
+- There is a seed script in the `server` folder that will create employees in the database if the database is empty.
+
 ### Instructions
 
 #### Vainlla JS Demo (`/client`)
