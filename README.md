@@ -20,6 +20,8 @@ This repository contains two different projects.
 
 - There is a seed script in the `server` folder that will create employees in the database if the database is empty.
 
+- There is a timeout set during axios requests to simulate the performance of the app running in production.
+
 ### Instructions
 
 #### Clone the repository
