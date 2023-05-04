@@ -25,7 +25,7 @@ This repository contains two different projects.
 #### Vainlla JS Demo (`/client`)
 
 ```bash
-git clone
+git clone https://github.com/michael-duren/salary-calculator
 cd client/src
 open index.html
 ```
